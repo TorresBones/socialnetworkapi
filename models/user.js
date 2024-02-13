@@ -46,5 +46,5 @@ userSchema.virtual('friendCount').get(function () {
 //     await thought.deleteMany({ username: doc.username });
 // });
 
-const user = model('user'. userSchema);
+const user = model('user', userSchema);
 module.exports = user;

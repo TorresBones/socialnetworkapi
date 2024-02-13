@@ -13,7 +13,7 @@ const thoughtController = {
             });   
     },
 
-    getThouoghtById({ params }, res) {
+    getThoughtById({ params }, res) {
         Thought.findone({ _id: params.thoughtId })
         .populate({
             path: "thoughts",

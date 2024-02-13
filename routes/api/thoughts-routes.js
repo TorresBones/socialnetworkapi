@@ -4,7 +4,7 @@ const { getAllThoughts, getThoughtById, addThought, updateThought, removeThought
 
 router.route("/").get(getAllThoughts).post(addThought);
 
-router.route("/:toughtId").get(getThoughtById).put(updateThought).delete(removeThought);
+router.route("/:thoughtId").get(getThoughtById).put(updateThought).delete(removeThought);
 
 router.route("/:thoughtId/reactions").post(addReaction);
 
