@@ -8,11 +8,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('publuc'));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/social-network-api", {
-    useFindAndModify: false,
+mongoose.connect('mongodb://127.0.0.1:27017/socialnetworkapi', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
 });
 
 mongoose.set("debug", true);
