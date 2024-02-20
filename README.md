@@ -6,8 +6,8 @@ The socialnetworkapi is a robust API tailored for social network web application
 ## Usage
 To utilize this application, clone the repository to your local machine and follow these steps:
 
-- Install Node.js by running: npm install.
-- Start the application by running: npm run start.
+- Install Node.js by running: `npm install`.
+- Start the application by running: `npm run start`.
 
 ## Video Link and Repo link
 
