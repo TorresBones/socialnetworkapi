@@ -1,6 +1,6 @@
 const express = require('express');
-const mongoose = require("mongoose");
-
+const routes = require('./routes');
+const db = require('./connection/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -8,10 +8,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-mongoose.connect('mongodb://127.0.0.1:27017/socialnetworkapi');
+app.use(routes);
 
-// mongoose.set("debug", true);
-
-app.use(require('./routes'));
-
-app.listen(PORT, () => console.log(`Listening on ${PORT}`))
+db.once("open", () => {
+    app.listen(PORT, () => console.log(`Listening on ${PORT}`)); 
+});
