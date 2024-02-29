@@ -1,14 +1,17 @@
-const { User } =  require("../models");
+const { User } =  require("../models/user");
 
 const userController = {
 
     getAllUsers(req, res) {
         User.find({})
-        .sort({ _id: -1 })
-        .then((dbUserData) => res.json(dbUserData))
+        // .sort({ _id: -1 })
+        // .then((dbUserData) => res.json(dbUserData))
+        .then((users) => {
+            res.jason(users)
+        })
         .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
+            console.error(err);
+            res.status(500).json({ error: 'Internal Server Error' });
         });
     },
 
