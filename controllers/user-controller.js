@@ -1,14 +1,19 @@
-const { User } =  require("../models/user");
+const { User } = require("../models/");
 
 const userController = {
 
     getAllUsers(req, res) {
         User.find({})
-        // .sort({ _id: -1 })
-        // .then((dbUserData) => res.json(dbUserData))
-        .then((users) => {
-            res.jason(users)
-        })
+        .select("-__v")
+        .populate([{
+            path: "friends",
+            select: "-__v"
+        },
+        {
+            path: "thoughts",
+            select: "-__v"
+        }])
+        .then(dbUserData => res.json(dbUserData))
         .catch((err) => {
             console.error(err);
             res.status(500).json({ error: 'Internal Server Error' });
@@ -16,24 +21,20 @@ const userController = {
     },
 
     getUserById({ params }, res) {
-        User.findOne({ _id: params.userId })
-        .select("-_ _v")
-        .populate({
+        User.findOne({ _id: params.userId }) 
+        .populate([{
             path: "friends",
-        })
-        .populate({
+            select: "-__v"
+        },
+        {
             path: "thoughts",
-        })
-        .then((dbUserData) => {
-            if (!dbUserData) {
-                res.status(404).json({ message: "No user data found with this ID." });
-                return;
-            }
-            res.json(dbUserData);
-        })
-        .catch((err) => {
+            select: "-__v"
+        }
+    ])
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
             console.log(err);
-            res.status(400).json(err);
+            res.status(400);
         });
     },
 
