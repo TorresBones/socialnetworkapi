@@ -10,6 +10,8 @@ To utilize this application, clone the repository to your local machine and foll
 - Start the application by running: `npm run start`.
 
 ## Video Link and Repo link
+- Video Link: https://www.youtube.com/watch?v=ywygINqHrVM
+- Repo Link: https://github.com/TorresBones/socialnetworkapi
 
 ## Contributors
 - Stack Overflow
